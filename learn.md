@@ -2,8 +2,9 @@
 ---
 1. 配置kissy
    首先git clone下 整个kissy的项目目录， 放在localhost上面或者自己服务器上面的一个地方， 然后配置脚本
-   ```html
-    	<script type="text/javascript" src="http://localhost/kissy/build/seed.js"></script>
+   
+      ```HTML
+    <script type="text/javascript" src="http://localhost/kissy/build/seed.js"></script>
 	<script>
 		var S = KISSY;
 		if(S.Config.debug) {
@@ -21,7 +22,8 @@
 		    });
 		}
 	</script>
-    ```
+     ```
+   
 2. 配置kissy-gallery 开发环境
    <a href="http://gallery.kissyui.com/quickstart?spm=0.0.0.0.CV5pUE">官方网址</a> 
    * sudo apt-get install node
