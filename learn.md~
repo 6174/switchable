@@ -2,7 +2,7 @@
 ---
 1. 配置kissy
    首先git clone下 整个kissy的项目目录， 放在localhost上面或者自己服务器上面的一个地方， 然后配置脚本
-   ```javascript
+   ```html
     	<script type="text/javascript" src="http://localhost/kissy/build/seed.js"></script>
 	<script>
 		var S = KISSY;

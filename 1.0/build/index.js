@@ -40,7 +40,7 @@ KISSY.add("/kissy-gallery/switchable/1.0/build/index", function(S, DOM, Event, A
          * @type {HTMLElement}
          */
         self.container = config.container;
-        if (!self.container instanceof HTMLElement){
+        if (self.container[0].nodeType !== 1){
             S.error("no container found!")
             return;
         }
