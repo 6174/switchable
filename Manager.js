@@ -194,17 +194,6 @@
             return workerQueue;
         }
 
-        self.hasJob = function() {
-            var workerQueue = self.workerQueue;
-            var i;
-            var job;
-            for (i = 0; i < l; i++) {
-                job = workerQueue[i];
-                if (job[1] != job[3]) return true;
-            }
-            return false;
-        }
-
         //bind finish One Round event
         self.bind("finishOneRound", function() {
             self._generateWorkQueue();

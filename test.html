@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8"/>
+	<title>test kissy</title>
+	<script type="text/javascript" src="/kissy/build/seed.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/base.css">
+	<link rel="stylesheet" type="text/css" href="./css/newsSlider.css">
+	<script>
+		var S = KISSY;
+		if(S.Config.debug) {
+		    S.config({
+		    	base: "/kissy/build",
+		        packages:{
+		        	"kissy-gallery":{
+		                base: "../../kissy-gallery/", 
+		                charset: "utf-8",
+		                ignorePackageNameInUri: true
+		        	}
+		        }
+		    });
+		}
+	</script>
+	<script type="text/javascript" src="js/countdown.js"></script>
+	<!-- <script type="text/javascript" src="js/test.js"></script> -->
+</head>
+<body>
+<button id="Test-btn"> Animate</button>
+
+<div id="PlayArea">
+	<div id="Test-Image"> </div>
+</div>
+
+<div id="NewsScroller-Demo">
+	<div class="demo-container scroll-news" id="slide-template">
+	    <ul class="news-items">
+	        <li><a target="_blank" href="#">“一分钱”轻松体验淘宝网购流程</a></li>
+	        <li><a target="_blank" href="#">开通网银，支付宝为您一路护航</a></li>
+	        <li><a target="_blank" href="#">新手买家？帮助教程带您走通淘宝</a></li>
+	        <li><a target="_blank" href="#">尽情挥洒你的创意，共建淘宝</a></li>
+	        <li><a target="_blank" href="#">认准标识，精选实力卖家任您选择</a></li>
+	        <li><a target="_blank" href="#">收藏</a> + <a target="_blank" href="#">购物车</a>，逛街搜店更便捷</li>
+	    </ul>
+	</div>
+</div>
+
+<script>
+KISSY.use('dom, event, anim, node, base, /kissy-gallery/switchable/1.0/build/, /kissy-gallery/JobManager/1.0/build/index',
+	function(S, DOM, Event, Anim, Node, Base, NewsSlider, Manager) {
+		S.ready(function() {
+			/**
+			 *
+			 * @DESC run NewsSlider
+			 */
+			var slide = new NewsSlider({
+				container: S.one("#slide-template"),
+				containerCls: ".news-items",
+				interval: 3,
+				duration: .2
+			});
+			var wrapper = S.one("#NewsScroller-Demo");
+			var slideTemplate = S.one("#slide-template");
+
+			var jobManager = new Manager({
+				workerRange: [2, 3],
+        		workTimeRange: [3, 4]
+			});
+
+			for (var i = 0, l = 100; i < l; i++) {
+				var container = slideTemplate.clone(true);
+				DOM.attr(container, "id", "");
+				DOM.append(container, wrapper);
+				// console.log(NewsSlider.isElInViewPort(container, S.one("body")));
+				var slide = new NewsSlider({
+					container: container,
+					containerCls: ".news-items",
+					effect: "scrolly",
+					easing: "easeOutStrong",
+					interval: 3,
+					duration: .2
+				});
+				jobManager.addWorker(slide);
+			}
+			jobManager.run();
+
+			setTimeout(function(){
+				// jobManager.pause();
+			}, 6000);
+			window.manager = jobManager;
+		});
+
+	});
+</script>
+<!-- <script src="js/base.js"></script> -->
+</body>
+</html>
