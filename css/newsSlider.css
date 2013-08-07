@@ -1,0 +1,36 @@
+
+#PlayArea{
+	border: solid 1px black;
+	padding: 5px;
+	height: 150px;
+	position: relative;
+}
+#Test-Image{
+	width: 100px;
+	height: 100px;
+	top: 30px;
+	left:50px;
+	background: green;
+	position: absolute;
+}
+ul,li {
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+body{
+	padding-left:10px;
+	min-height: 600px;
+}
+.demo-container{
+	width: 400px;
+}  
+.scroll-news {
+    height: 20px;
+    overflow: hidden;
+    margin-top:10px;
+}
+.scroll-news a {
+    color: #FF7E00;
+    font-size: 15px
+}
